@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "record my leet-code problems",
   "type": "module",
+  "bin": {
+    "topic": "bin/index.ts"
+  },
   "scripts": {
     "test": "vitest watch",
     "eslint": "eslint index.ts",

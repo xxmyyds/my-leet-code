@@ -4,11 +4,11 @@
 import { program } from 'commander'
 import { promisify } from 'util'
 import figlet from 'figlet'
-import chalk from 'chalk'
 import inquirer from 'inquirer'
+import { Inquirer } from '../types/index'
+import { createTopic } from './utils/topic'
+import { log } from './utils/helper'
 const asyncFiglet = promisify(figlet)
-
-const log = (content: string) => console.log(chalk.yellow(content))
 
 program.version('1.0.0')
 program.option('-n --name <type>', 'output name')
@@ -24,7 +24,7 @@ program
   .action(async (name) => {
     await printLogo()
     log('准备添加新的题目')
-    let res = await inquirer.prompt([
+    let res = await inquirer.prompt<Inquirer>([
       {
         type: 'input',
         name: 'cname',
@@ -50,6 +50,7 @@ program
     ])
     // const {} = res
     log('开始创建题目')
+    createTopic(name, res)
   })
 
 program.parse(process.argv)
