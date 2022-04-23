@@ -37,6 +37,11 @@ program
       },
       {
         type: 'input',
+        name: 'number',
+        message: 'please enter the number of the topic:',
+      },
+      {
+        type: 'input',
         name: 'url',
         message: 'please enter the leetcode url of the topic:',
       },

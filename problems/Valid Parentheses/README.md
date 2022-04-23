@@ -1,8 +1,8 @@
-# 有效的括号
+## 20.有效的括号
 
 
 
-> 难度：easy
+> 难度：简单
 >
 > https://leetcode-cn.com/problems/valid-parentheses/
 

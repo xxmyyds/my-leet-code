@@ -1,18 +1,25 @@
 import fs from 'fs'
-import { Inquirer } from './../../types/index'
+import { Inquirer, DIFF } from './../../types/index'
 import { getAbsolutePath, hasAccessToMkDir, hasDir, log } from './helper'
 
 enum DIR {
   TOPIC_PATH = './problems/',
 }
 
+const DIFFMAP: { [Key in DIFF]: string } = {
+  easy: '简单',
+  medium: '中等',
+  hard: '困难',
+} as const
+
 export function createTopic(name: string, topic: Inquirer) {
-  const { cname, ename, url, diff } = topic
+  const { cname, ename, url, diff, number } = topic
+
   const localDir = getAbsolutePath(`${DIR.TOPIC_PATH}${ename}`)
   createTopicDir(localDir)
   createTopicCodingTmp(localDir)
   createTopicTestTmp(localDir, ename)
-  createTopicReadmeTmp(localDir, cname, url, diff)
+  createTopicReadmeTmp(localDir, cname, url, diff, number)
 }
 
 function createTopicDir(localDir: string): void | boolean {
@@ -46,11 +53,12 @@ function createTopicReadmeTmp(
   localDir: string,
   cname: string,
   url: string,
-  diff: string
+  diff: DIFF,
+  number: number
 ) {
   fs.writeFileSync(
     `${localDir}/README.md`,
-    `# ${cname}\r\n\r\n> 难度：${diff}\r\n>\r\n> ${url}\r\n\r\n## 题目`
+    `# ${number}.${cname}\r\n\r\n> 难度：${DIFFMAP[diff]}\r\n>\r\n> ${url}\r\n\r\n## 题目`
   )
   log('README.md create successfully')
 }
