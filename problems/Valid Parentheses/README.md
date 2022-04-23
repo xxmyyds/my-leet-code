@@ -5,6 +5,8 @@
 > 难度：简单
 >
 > https://leetcode-cn.com/problems/valid-parentheses/
+> 
+> 栈
 
 ## 题目
 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。

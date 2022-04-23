@@ -58,7 +58,7 @@ function createTopicReadmeTmp(
 ) {
   fs.writeFileSync(
     `${localDir}/README.md`,
-    `# ${number}.${cname}\r\n\r\n> 难度：${DIFFMAP[diff]}\r\n>\r\n> ${url}\r\n\r\n## 题目`
+    `## ${number}.${cname}\r\n\r\n> 难度：${DIFFMAP[diff]}\r\n>\r\n> ${url}\r\n\r\n## 题目`
   )
   log('README.md create successfully')
 }
